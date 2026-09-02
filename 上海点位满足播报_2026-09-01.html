@@ -77,17 +77,22 @@ table.sm tbody tr:last-child td{border-bottom:none}
 .narr .hl2{color:var(--ok);font-weight:600}
 
 .ovgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(378px,1fr));gap:14px;margin-top:14px}
+.ovgrid>*{min-width:0}      /* 网格子项默认不能小于 min-content, 会顶破容器 */
 .ovcard{padding:16px 18px 18px}
 .ovcard h3{margin:0 0 14px;font-size:15px;display:flex;align-items:center;gap:8px;color:var(--brand-dd)}
 .ovcard h3 .tag{
   font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;
   background:var(--brand-l);color:var(--brand-d);border:1px solid var(--line)
 }
-.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+/* 用 minmax(0,1fr) 而不是 1fr: 1fr 的最小值是 min-content, 轨道无法再收缩,
+   窄卡片里数字+说明文字会顶破卡片。minmax(0,...) 允许收缩, 文字自然换行。 */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .kpi{background:var(--brand-l2);border:1px solid var(--line);border-radius:11px;padding:11px 13px}
 .kpi .k{font-size:12px;color:var(--ink2)}
 .kpi .v{font-size:25px;font-weight:700;line-height:1.25;color:var(--brand-dd);letter-spacing:-.4px}
-.kpi .v small{font-size:13px;font-weight:600;color:var(--ink2);margin-left:3px}
+/* 与主数值之间靠模板里的空格断行, 卡片窄时明细自动换到第二行而不顶破卡片,
+   所以这里不再额外加 margin-left(否则空格 + 边距会显得太散) */
+.kpi .v small{font-size:13px;font-weight:600;color:var(--ink2);white-space:nowrap}
 .kpi.big{grid-column:span 1}
 /* 核心指标卡: 基本满足占比 / 未执行调度占比 */
 .kpi.lead{background:linear-gradient(135deg,#E4F5FE,#F5FBFE);border-color:var(--brand);
@@ -95,13 +100,17 @@ table.sm tbody tr:last-child td{border-bottom:none}
 .kpi.lead .v{font-size:29px}
 .kpi .star{display:inline-block;font-size:10px;font-weight:700;vertical-align:1px;
   background:var(--brand);color:#fff;border-radius:4px;padding:1px 5px;margin-left:4px}
-.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
 .mini div{background:#fff;border:1px dashed var(--line);border-radius:9px;padding:8px 10px}
 .mini .k{font-size:11.5px;color:var(--ink3)}
 .mini .v{font-size:16px;font-weight:700;color:var(--ink)}
 
 /* ---------------- alerts ---------------- */
 .algrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(390px,1fr));gap:12px}
+.algrid>*{min-width:0}
+/* 点位名/街道名可能很长且不含空格, 允许任意位置断行, 否则会顶破卡片。
+   表格不加这条: 表格在 .tw/.twx 里可横向滚动, 加了反而会把字拆断。 */
+.al,.hero .sub{overflow-wrap:anywhere}
 .al{border-radius:12px;padding:12px 14px;border:1px solid;background:#fff;position:relative;overflow:hidden}
 .al::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
 .al.high{border-color:var(--bad-line);background:var(--bad-bg)}
@@ -170,6 +179,11 @@ table.sm tbody tr:last-child td{border-bottom:none}
 
 /* ---------------- table ---------------- */
 .tw{overflow:auto;max-height:74vh}
+/* 横向滚动容器: 表格再宽也只在容器内滚动, 不会把整个文档撑宽。
+   文档一旦比视口宽, 手机浏览器会把整页缩小以显示完整宽度, 字就全变小了。 */
+.twx{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.twx::-webkit-scrollbar{height:6px}
+.twx::-webkit-scrollbar-thumb{background:#CFE6F5;border-radius:3px}
 table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
 thead th{
   background:var(--brand-l);color:var(--brand-dd);font-weight:700;font-size:12.5px;
@@ -273,12 +287,12 @@ footer{text-align:center;color:var(--ink3);font-size:12px;padding:26px 0 8px}
   .sec-hd h2{font-size:15px}
   .sec-hd .note{font-size:11px;flex:1 1 100%}
 
-  .kpis{grid-template-columns:1fr 1fr;gap:8px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .kpi{padding:9px 10px}
   .kpi .v{font-size:20px}
   .kpi.lead .v{font-size:22px}
   .kpi .k{font-size:11px}
-  .mini{grid-template-columns:1fr 1fr;gap:6px}
+  .mini{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
   .ovcard{padding:12px 13px 14px}
 
   /* 页签横向滚动, 避免挤成好几行把内容顶下去 */
@@ -317,6 +331,12 @@ footer{text-align:center;color:var(--ink3);font-size:12px;padding:26px 0 8px}
   .narr{padding:4px 10px 12px}
   table.sm thead th{font-size:11px;padding:6px 7px}
   table.sm tbody td{font-size:11.5px;padding:6px 7px}
+  /* 城市总结 14 列、高价值点位 13 列, 横向滑动时把首列(时段/等级)吸附住 */
+  table.sm.stick td.l:first-child{position:sticky;left:0;z-index:5;
+    background:#fff;box-shadow:2px 0 0 var(--line)}
+  table.sm.stick thead th.l:first-child{position:sticky;left:0;z-index:12;
+    background:var(--brand-l);box-shadow:2px 0 0 var(--line)}
+  table.sm.stick tbody tr.total td.l:first-child{background:#EAF7FE}
   .rk{font-size:11.5px;padding:3px 7px;margin:2px 4px 2px 0}
   .rk i{font-size:10px}
   .nb h4{font-size:13px}
@@ -343,8 +363,8 @@ footer{text-align:center;color:var(--ink3);font-size:12px;padding:26px 0 8px}
 }
 /* 窄屏手机 */
 @media (max-width:420px){
-  .kpis{grid-template-columns:1fr}
-  .mini{grid-template-columns:1fr}
+  .kpis{grid-template-columns:minmax(0,1fr)}
+  .mini{grid-template-columns:minmax(0,1fr)}
   .tools .fld{flex:1 1 100%}
   .hero h1{font-size:16px}
 }
@@ -459,11 +479,24 @@ function skipTerms(o){
   if(!USE_OUT)  t.push(`调出 ${num(o.outb)} 辆`);
   return t.join('、');
 }
+/* 把匹配到的表格逐个套进 .twx 横向滚动容器。
+   列数多的表格如果没有可滚动的父容器, 它的最小内容宽度会一路把
+   .nb / .narr / .wrap / body 撑宽, 手机上表现为整页被缩小、字很小。
+   统一在这里兜底, 比在每段模板字符串里手写 <div> 更不容易漏。 */
+function wrapScroll(sel, root){
+  (root || document).querySelectorAll(sel).forEach(t => {
+    if(t.parentElement && t.parentElement.classList.contains('twx')) return;
+    const d = document.createElement('div');
+    d.className = 'twx';
+    t.parentNode.insertBefore(d, t);
+    d.appendChild(t);
+  });
+}
 (function(){
   const G = DATA.digest, LV = G.levels;
 
   /* --- 1. 城市总结: 三峰各一行 --- */
-  let city = `<table class="sm"><thead><tr>
+  let city = `<table class="sm stick"><thead><tr>
       <th class="l" scope="col">时段</th><th scope="col">点位数</th>
       <th class="hero-h" scope="col">基本满足占比</th><th scope="col">基本满足</th>
       <th scope="col">未满足</th><th scope="col">点位满足率</th>
@@ -516,7 +549,7 @@ function skipTerms(o){
     {t:'点位满足率',      hero:false},
     {t:'未执行调度占比',  hero:true},
   ];
-  let hv = `<table class="sm"><thead><tr><th class="l" rowspan="2" scope="col">点位等级</th>`
+  let hv = `<table class="sm stick"><thead><tr><th class="l" rowspan="2" scope="col">点位等级</th>`
     + PEAKS.map(p=>`<th class="g" colspan="${HVM.length}" scope="colgroup">${p}</th>`).join('')
     + `</tr><tr>` + PEAKS.map(()=>
         HVM.map((m,j)=>`<th class="${j===0?'gl':''}${m.hero?' hero-h':''}" scope="col">${m.t}</th>`)
@@ -544,10 +577,12 @@ function skipTerms(o){
           + `<small class="dim"> ${num(c.noexec)}个</small></td>`;
       }).join('') + `</tr></tbody></table>`;
 
-  document.getElementById('narr').innerHTML =
+  const narr = document.getElementById('narr');
+  narr.innerHTML =
       `<div class="nb"><h4>一、城市总结（上海城市群）</h4>${city}</div>`
     + `<div class="nb"><h4>二、分层总结</h4>${lv}</div>`
     + `<div class="nb"><h4>三、高价值点位（TOP1%–TOP5%）</h4>${hv}</div>`;
+  wrapScroll('table.sm', narr);
 })();
 
 /* ===================== 总览卡片 ===================== */
@@ -558,9 +593,9 @@ document.getElementById('ovgrid').innerHTML = PEAKS.map(p=>{
       <span class="tag">${esc(VAR.label)}</span></h3>
     <div class="kpis">
       <div class="kpi lead"><div class="k">点位基本满足占比 <span class="star">核心指标</span></div>
-        <div class="v ${rcls(o.okr)}">${pct(o.okr)}<small>${num(o.ok)}/${num(o.n)}</small></div></div>
+        <div class="v ${rcls(o.okr)}">${pct(o.okr)} <small>${num(o.ok)}/${num(o.n)}</small></div></div>
       <div class="kpi lead"><div class="k">未执行调度占比 <span class="star">核心指标</span></div>
-        <div class="v ${rcls(1-o.noexecr)}">${pct(o.noexecr)}<small>${num(o.noexec)}/${num(o.n)}</small></div></div>
+        <div class="v ${rcls(1-o.noexecr)}">${pct(o.noexecr)} <small>${num(o.noexec)}/${num(o.n)}</small></div></div>
       <div class="kpi"><div class="k">点位满足率（有效供给/预测需求）</div><div class="v ${rcls(o.rate)}">${pct(o.rate)}</div></div>
       <div class="kpi"><div class="k">需求缺口（辆）</div><div class="v" style="color:var(--bad)">${num(o.gap)}</div></div>
     </div>
