@@ -250,10 +250,110 @@ details.kj code{background:var(--brand-l);color:var(--brand-dd);padding:1px 6px;
 details.kj ul{margin:6px 0;padding-left:22px}
 footer{text-align:center;color:var(--ink3);font-size:12px;padding:26px 0 8px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* ==================== 移动端适配 ==================== */
+/* 平板 */
+@media (max-width:1024px){
+  .wrap{padding:0 12px 44px}
+  .ovgrid{grid-template-columns:1fr}
+}
+/* 手机 */
 @media (max-width:760px){
+  body{font-size:13px}
+  .wrap{padding:0 10px 40px}
+  .hero{padding:16px 0 14px}
+  .hero h1{font-size:17px;letter-spacing:0}
+  .hero .sub{font-size:11.5px;line-height:1.5}
+  .hero .badge{margin-left:0;margin-top:8px;font-size:11.5px;padding:5px 11px}
+  .hero-top{gap:6px}
+  .chips{gap:5px;margin-top:10px}
+  .chip{font-size:10.5px;padding:4px 8px}
+
+  .sec{margin-top:14px}
+  .sec-hd{flex-wrap:wrap;gap:6px}
+  .sec-hd h2{font-size:15px}
+  .sec-hd .note{font-size:11px;flex:1 1 100%}
+
+  .kpis{grid-template-columns:1fr 1fr;gap:8px}
+  .kpi{padding:9px 10px}
+  .kpi .v{font-size:20px}
+  .kpi.lead .v{font-size:22px}
+  .kpi .k{font-size:11px}
+  .mini{grid-template-columns:1fr 1fr;gap:6px}
+  .ovcard{padding:12px 13px 14px}
+
+  /* 页签横向滚动, 避免挤成好几行把内容顶下去 */
+  .tabs{position:static;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    padding:5px;gap:4px}
+  .tabs::-webkit-scrollbar{height:0}
+  .tabs .grp{flex:0 0 auto}
+  .tabs .glabel{display:none}
+  .tab{padding:8px 11px;font-size:12px}
+
+  /* 明细/汇总表列很多, 保持横向滑动, 但首列吸附以便始终看到点位名称 */
+  .tw{max-height:none;-webkit-overflow-scrolling:touch}
+  table{font-size:12px}
+  thead th{padding:7px 8px;font-size:11.5px}
+  tbody td{padding:7px 8px}
+  td.name{max-width:180px}
+  #panels td.l:first-child,
+  #panels th.l:first-child{position:sticky;left:0;z-index:5;
+    background:#fff;box-shadow:2px 0 0 var(--line)}
+  #panels thead th.l:first-child{z-index:12;background:var(--brand-l)}
+  #panels tbody tr:nth-child(even) td.l:first-child{background:#FAFDFF}
+  #panels tbody tr.total td.l:first-child{background:#EAF7FE}
+
+  /* 筛选栏: 每行两个, 不再横向挤压 */
+  .tools{padding:10px;gap:7px}
+  .tools .fld{flex:1 1 calc(50% - 4px);min-width:0}
+  .tools input[type=search],.tools select{min-width:0;width:100%;font-size:12.5px}
+  .tools .fld.spacer{margin-left:0}
+  .btn{padding:8px 11px;font-size:12px}
+  .stat{font-size:11.5px;gap:4px 12px;padding:9px 10px}
+  .stat b{font-size:12.5px}
+  .pager{font-size:11.5px;gap:6px;padding:9px 10px}
+  .pager .btn{padding:6px 9px}
+
+  /* 总结区表格与标签 */
+  .narr{padding:4px 10px 12px}
+  table.sm thead th{font-size:11px;padding:6px 7px}
+  table.sm tbody td{font-size:11.5px;padding:6px 7px}
+  .rk{font-size:11.5px;padding:3px 7px;margin:2px 4px 2px 0}
+  .rk i{font-size:10px}
+  .nb h4{font-size:13px}
+
+  /* 预警卡片 */
+  .algrid{grid-template-columns:1fr;gap:10px}
+  .al{padding:10px 12px}
+  .al-nm{font-size:13.5px}
+  .al-hl{font-size:12.5px}
+  .pks{gap:5px}
+  .pk .m{font-size:14px}
+  .pk .s{font-size:10px}
+
+  /* 指标视图切换 */
+  .msw{padding:9px 10px;gap:7px}
+  .msw-n{flex:1 1 100%;margin-left:0}
+  .rad{padding:6px 10px;font-size:12.5px}
+
+  .blkhd{padding:11px 12px;flex-wrap:wrap}
+  .blkhd h3{font-size:13.5px}
+  .blkhd .mt{margin-left:0;flex:1 1 100%;font-size:11.5px}
+  details.kj summary{font-size:13px;padding:11px 13px}
+  details.kj .bd{padding:0 14px 13px;font-size:12px;line-height:1.75}
+}
+/* 窄屏手机 */
+@media (max-width:420px){
   .kpis{grid-template-columns:1fr}
-  .hero h1{font-size:20px}
-  .tabs{position:static}
+  .mini{grid-template-columns:1fr}
+  .tools .fld{flex:1 1 100%}
+  .hero h1{font-size:16px}
+}
+/* 打印 / 导出 PDF */
+@media print{
+  .tabs,.tools,.pager{display:none}
+  .panel[hidden]{display:block!important}
+  .tw{max-height:none;overflow:visible}
+  body{background:#fff}
 }
 </style>
 </head>
@@ -308,6 +408,8 @@ const D = DATA.dict, TIERS = DATA.tiers, PEAKS = DATA.peaks;
 const OKL = DATA.okLine, EXL = DATA.execLine;
 const F = {name:0, id:1, z:2, d:3, l:4, s:5, t:6, dem:7, park:8, inb:9, outb:10,
            ridein:11, rideout:12};
+/* 手机上默认每页少一些, 避免一次渲染上百行导致滑动卡顿 */
+const IS_MOBILE = window.matchMedia('(max-width:760px)').matches;
 const VAR = DATA.variant;                 // 供给量口径(v1: 停驻+调入 / v2: 再加骑入)
 const USE_RIDE = !!VAR.ride;              // 骑入是否计入供给
 const USE_OUT  = !!VAR.out;               // 调出是否从供给中扣减
@@ -605,7 +707,9 @@ function renderDetail(pnl, peak){
      <div class="fld"><label for="${uid}e">调度状态</label><select id="${uid}e">
        <option value="">全部</option><option value="1">有执行</option><option value="0">未执行</option></select></div>
      <div class="fld"><label for="${uid}ps">每页</label><select id="${uid}ps">
-       <option value="50">50 行</option><option value="100" selected>100 行</option>
+       <option value="20" ${IS_MOBILE?'selected':''}>20 行</option>
+       <option value="50">50 行</option>
+       <option value="100" ${IS_MOBILE?'':'selected'}>100 行</option>
        <option value="200">200 行</option><option value="99999">全部</option></select></div>
      <div class="fld spacer"><label>&nbsp;</label><button class="btn" id="${uid}rs">重置筛选</button></div>
      <div class="fld"><label>&nbsp;</label><button class="btn primary" id="${uid}cs">导出 CSV</button></div>
@@ -615,7 +719,7 @@ function renderDetail(pnl, peak){
    <div class="pager" id="${uid}pg"></div></div>`;
 
   const $ = s => document.getElementById(uid+s);
-  const st = {sort:'dem', dir:-1, page:1, ps:100};
+  const st = {sort:'dem', dir:-1, page:1, ps: IS_MOBILE ? 20 : 100};
   const all = ROWS[peak];
 
   $('hd').innerHTML = DCOLS.map(c=>
