@@ -200,7 +200,11 @@ tbody td{padding:8px 10px;border-bottom:1px solid #EDF4F8;text-align:right;white
 tbody tr:nth-child(even){background:#FAFDFF}
 tbody tr:hover{background:var(--brand-l2)}
 td.l,th.l{text-align:left}
-td.name{max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* 点位名称完整展示: 名称形如「静安-大宁路-工作日-早高峰-居民区-XX」,
+   用省略号截断后根本分不清是哪个点位。改为换行显示, 行会变高但信息不丢。
+   给列一个下限宽度, 免得表格布局把这一列压成一两个字宽。 */
+td.name{min-width:210px;max-width:340px;white-space:normal;
+  overflow-wrap:anywhere;line-height:1.45}
 td.idx{color:var(--ink3);font-variant-numeric:tabular-nums}
 td.num{font-variant-numeric:tabular-nums}
 tbody tr.total{background:#EAF7FE!important;font-weight:700}
@@ -308,7 +312,7 @@ footer{text-align:center;color:var(--ink3);font-size:12px;padding:26px 0 8px}
   table{font-size:12px}
   thead th{padding:7px 8px;font-size:11.5px}
   tbody td{padding:7px 8px}
-  td.name{max-width:180px}
+  td.name{min-width:150px;max-width:210px}
   #panels td.l:first-child,
   #panels th.l:first-child{position:sticky;left:0;z-index:5;
     background:#fff;box-shadow:2px 0 0 var(--line)}
