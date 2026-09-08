@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>上海B10-Solar运营分析报告 · 2026-09-07</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{--b9:#0a1f44;--b7:#1a3a6b;--b6:#2156a5;--b5:#2979ff;--b3:#90bfff;--b1:#e3f0ff;--b0:#f4f9ff;
+--g7:#374151;--g5:#6b7280;--g3:#d1d5db;--g1:#f3f4f6;--w:#fff;--red:#dc3545;--grn:#10b981}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+background:var(--g1);color:var(--g7);font-size:13px;line-height:1.6}
+.wrap{max-width:1400px;margin:0 auto;padding:20px}
+.hd{background:linear-gradient(135deg,var(--b9),var(--b6));color:var(--w);border-radius:14px;padding:26px 30px;margin-bottom:18px}
+.hd h1{font-size:21px;font-weight:700;margin-bottom:4px}
+.hd .sub{opacity:.8;font-size:12px}
+.card{background:var(--w);border-radius:10px;padding:18px 20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.ct{font-size:14px;font-weight:600;color:var(--b9);margin-bottom:12px;padding-left:10px;border-left:3px solid var(--b5)}
+.note{font-size:11px;color:var(--g5);margin-bottom:8px}
+.smr{background:var(--b0);border-radius:8px;padding:14px 16px;font-size:12.5px;line-height:1.95;border:1px solid var(--b1)}
+.smr b{color:var(--b9)}
+.kr{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.ki{background:var(--b0);border:1px solid var(--b1);border-radius:8px;padding:13px 10px;text-align:center}
+.ki .lb{font-size:11px;color:var(--g5);margin-bottom:3px}
+.ki .vl{font-size:21px;font-weight:700;color:var(--b9);line-height:1.25}
+.ki .ch{font-size:10.5px;color:var(--g5);margin-top:4px;white-space:nowrap}
+.up{color:var(--red);font-weight:600}
+.dn{color:var(--grn);font-weight:600}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:11.5px}
+thead th{background:var(--b9);color:var(--w);padding:8px 4px;font-weight:500;text-align:center;white-space:nowrap}
+tbody td{padding:6px 4px;text-align:center;border-bottom:1px solid var(--g3);white-space:nowrap}
+tbody tr:hover{background:var(--b0)}
+.rs{background:var(--b1);font-weight:600}
+.rs2{background:#fff8e1;font-weight:600}
+.rs3{background:var(--b0);font-weight:600;border-top:2px solid var(--b3)}
+.dv{border-top:2.5px solid var(--b5)}
+.cb{position:relative;height:320px;margin:8px 0}
+.bg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.bg button{padding:5px 12px;border:1px solid var(--b3);background:var(--w);color:var(--b7);
+border-radius:6px;font-size:11.5px;cursor:pointer;transition:.15s}
+.bg button.on,.bg button:hover{background:var(--b5);color:var(--w);border-color:var(--b5)}
+.flt{display:flex;gap:14px;flex-wrap:wrap;align-items:center;background:var(--b0);
+border:1px solid var(--b1);border-radius:8px;padding:11px 14px;margin-bottom:10px}
+.flt label{font-size:11.5px;color:var(--g5);margin-right:5px}
+.flt select,.flt input{padding:5px 9px;border:1px solid var(--b3);border-radius:5px;
+font-size:11.5px;color:var(--b9);background:var(--w);font-family:inherit}
+.flt button{padding:5px 12px;border:1px solid var(--b5);background:var(--b5);color:var(--w);
+border-radius:5px;font-size:11.5px;cursor:pointer}
+.flt button:hover{background:var(--b6)}
+.lgd{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--g3)}
+.lgd-i{display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;user-select:none;padding:2px 4px;border-radius:4px}
+.lgd-i:hover{background:var(--b0)}
+.lgd-i.off{opacity:.32;text-decoration:line-through}
+.lgd-i span.sw{width:16px;height:4px;border-radius:2px;flex-shrink:0}
+@media(max-width:640px){.wrap{padding:10px}.hd{padding:18px 16px}.hd h1{font-size:17px}
+ .card{padding:14px 12px}.cb{height:260px}}
+</style></head><body><div class="wrap">
+
+<div class="hd"><h1>上海B10-Solar运营分析报告</h1>
+<div class="sub">数据周期 2026.08.25 - 09/07 &nbsp;|&nbsp; 日环比: 09/07 vs 09/06 &nbsp;|&nbsp; 周环比: 近7天(09/01-09/07)日均 vs 上7天(08/25-08/31)日均 &nbsp;|&nbsp; 生成 09/08 10:46</div></div>
+
+<div class="card"><div class="ct">运营总结</div><div class="smr"><b>最新 09/07 (日环比 vs 09/06):</b> 收入 15,901 元 <span class="dn">▼52.3%</span>，订单 2,102 <span class="dn">▼24.4%</span>，可用翻台 1.66 <span class="dn">▼24.4%</span>，出单率 60.1% <span class="dn">▼11.7%</span>。收入领涨: 闵行路面(+72%)、其他(-10%)、闵行高校(-25%)；收入下滑: 浦东滨江绿道(-64%)、宝山滨江绿道(-62%)、徐汇滨江绿道(-61%)。<br><b>周度 (近7天09/01-09/07日均 vs 上7天08/25-08/31日均):</b> 日均收入 17,797 元 <span class="up">▲2.8%</span>，日均订单 1,878 <span class="up">▲18.4%</span>，可用翻台 1.51 <span class="up">▲11.2%</span>，出单率 54.7% <span class="up">▲6.9%</span>。<br><b>表现突出场景 (近7天翻台):</b> 闵行高校(翻台2.35)、其他(翻台2.20)、长宁绿道(翻台1.69)<br><b>需关注场景:</b> 宝山高校(翻台0.71)、宝山滨江绿道(翻台0.81)</div></div>
+
+<div class="card"><div class="ct">昨日数据与日环比</div>
+<div class="note">日环比口径: 09/07(最新) vs 09/06(前一日)</div>
+<div class="kr"><div class="ki"><div class="lb">总收入(元)</div><div class="vl">15,901</div><div class="ch">前值 33,340 &nbsp;<span class="dn">▼52.3%</span></div></div><div class="ki"><div class="lb">总订单</div><div class="vl">2,102</div><div class="ch">前值 2,779 &nbsp;<span class="dn">▼24.4%</span></div></div><div class="ki"><div class="lb">单次订单占比</div><div class="vl">70.9%</div><div class="ch">前值 71.2% &nbsp;<span class="dn">▼0.5%</span></div></div><div class="ki"><div class="lb">车均收入(元)</div><div class="vl">12.6</div><div class="ch">前值 26.4 &nbsp;<span class="dn">▼52.3%</span></div></div><div class="ki"><div class="lb">可用车</div><div class="vl">1,264</div><div class="ch">前值 1,263 &nbsp;<span class="up">▲0.1%</span></div></div><div class="ki"><div class="lb">可用翻台</div><div class="vl">1.66</div><div class="ch">前值 2.20 &nbsp;<span class="dn">▼24.4%</span></div></div><div class="ki"><div class="lb">可用出单率</div><div class="vl">60.1%</div><div class="ch">前值 68.1% &nbsp;<span class="dn">▼11.7%</span></div></div><div class="ki"><div class="lb">客单价(元)</div><div class="vl">7.6</div><div class="ch">前值 12.0 &nbsp;<span class="dn">▼36.9%</span></div></div></div>
+<div class="note" style="margin-top:12px;margin-bottom:4px;font-weight:600;color:var(--b9);font-size:12px">各场景昨日表现 (日环比)</div>
+<div class="tw"><table><thead><tr><th style="text-align:left">场景</th><th>总收入</th><th>收入日环比</th><th>总订单</th><th>订单日环比</th><th>可用车</th><th>可用翻台</th><th>翻台日环比</th><th>出单率</th><th>客单价</th></tr></thead><tbody><tr><td style="text-align:left"><b>浦东滨江绿道</b></td><td>7,032</td><td><span class="dn">▼63.8%</span></td><td>709</td><td><span class="dn">▼49.4%</span></td><td>518</td><td>1.37</td><td><span class="dn">▼50.8%</span></td><td>61.8%</td><td>9.9</td></tr><tr><td style="text-align:left"><b>滴水湖景区</b></td><td>1,721</td><td><span class="dn">▼58.9%</span></td><td>193</td><td><span class="dn">▼40.1%</span></td><td>198</td><td>0.97</td><td><span class="dn">▼40.1%</span></td><td>42.9%</td><td>8.9</td></tr><tr><td style="text-align:left"><b>闵行高校</b></td><td>1,136</td><td><span class="dn">▼25.3%</span></td><td>355</td><td><span class="up">▲7.6%</span></td><td>123</td><td>2.89</td><td><span class="up">▲9.3%</span></td><td>83.7%</td><td>3.2</td></tr><tr><td style="text-align:left"><b>其他</b></td><td>2,650</td><td><span class="dn">▼10.1%</span></td><td>436</td><td><span class="up">▲34.2%</span></td><td>145</td><td>3.01</td><td><span class="up">▲34.2%</span></td><td>71.0%</td><td>6.1</td></tr><tr><td style="text-align:left"><b>徐汇滨江绿道</b></td><td>1,185</td><td><span class="dn">▼60.8%</span></td><td>104</td><td><span class="dn">▼39.2%</span></td><td>69</td><td>1.51</td><td><span class="dn">▼34.8%</span></td><td>55.1%</td><td>11.4</td></tr><tr><td style="text-align:left"><b>闵行路面</b></td><td>1,433</td><td><span class="up">▲72.4%</span></td><td>213</td><td><span class="up">▲106.8%</span></td><td>100</td><td>2.13</td><td><span class="up">▲115.1%</span></td><td>71.0%</td><td>6.7</td></tr><tr><td style="text-align:left"><b>宝山滨江绿道</b></td><td>292</td><td><span class="dn">▼62.5%</span></td><td>25</td><td><span class="dn">▼51.9%</span></td><td>42</td><td>0.60</td><td><span class="dn">▼51.9%</span></td><td>40.5%</td><td>11.7</td></tr><tr><td style="text-align:left"><b>宝山高校</b></td><td>179</td><td><span class="dn">▼28.2%</span></td><td>36</td><td><span class="dn">▼12.2%</span></td><td>54</td><td>0.67</td><td><span class="dn">▼10.6%</span></td><td>29.6%</td><td>5.0</td></tr><tr><td style="text-align:left"><b>长宁绿道</b></td><td>273</td><td><span class="dn">▼29.1%</span></td><td>31</td><td><span class="dn">▼6.1%</span></td><td>15</td><td>2.07</td><td><span class="up">▲0.2%</span></td><td>46.7%</td><td>8.8</td></tr><tr class="rs"><td style="text-align:left">大盘合计</td><td>15,901</td><td><span class="dn">▼52.3%</span></td><td>2,102</td><td><span class="dn">▼24.4%</span></td><td>1,264</td><td>1.66</td><td><span class="dn">▼24.4%</span></td><td>60.1%</td><td>7.6</td></tr></tbody></table></div></div>
+
+<div class="card"><div class="ct">周度日均值对比</div>
+<div class="note">周环比口径: 近7天(09/01-09/07)日均值 vs 上7天(08/25-08/31)日均值</div>
+<div class="kr"><div class="ki"><div class="lb">日均收入(元)</div><div class="vl">17,797</div><div class="ch">前值 17,308 &nbsp;<span class="up">▲2.8%</span></div></div><div class="ki"><div class="lb">日均订单</div><div class="vl">1,878</div><div class="ch">前值 1,587 &nbsp;<span class="up">▲18.4%</span></div></div><div class="ki"><div class="lb">单次订单占比</div><div class="vl">71.4%</div><div class="ch">前值 77.7% &nbsp;<span class="dn">▼8.1%</span></div></div><div class="ki"><div class="lb">车均收入(元)</div><div class="vl">14.3</div><div class="ch">前值 14.8 &nbsp;<span class="dn">▼3.4%</span></div></div><div class="ki"><div class="lb">日均可用车</div><div class="vl">1,242</div><div class="ch">前值 1,167 &nbsp;<span class="up">▲6.4%</span></div></div><div class="ki"><div class="lb">可用翻台</div><div class="vl">1.51</div><div class="ch">前值 1.36 &nbsp;<span class="up">▲11.2%</span></div></div><div class="ki"><div class="lb">可用出单率</div><div class="vl">54.7%</div><div class="ch">前值 51.1% &nbsp;<span class="up">▲6.9%</span></div></div><div class="ki"><div class="lb">客单价(元)</div><div class="vl">9.5</div><div class="ch">前值 10.9 &nbsp;<span class="dn">▼13.1%</span></div></div></div></div>
+
+<div class="card"><div class="ct">各投放场景概况</div>
+<div class="note">周环比口径: 近7天(09/01-09/07)日均值 vs 上7天(08/25-08/31)日均值</div>
+<div class="tw"><table><thead><tr><th style="text-align:left">场景</th><th>日均收入</th><th>日均订单</th><th>单次占比</th><th>车均收入</th><th>日均可用车</th><th>可用翻台</th><th>出单率</th><th>客单价</th><th>收入周环比</th><th>订单周环比</th><th>翻台周环比</th></tr></thead><tbody><tr><td style="text-align:left"><b>浦东滨江绿道</b></td><td>9,282</td><td>776</td><td>72%</td><td>18.0</td><td>516</td><td>1.50</td><td>56.3%</td><td>12.0</td><td><span class="up">▲6.2%</span></td><td><span class="up">▲6.5%</span></td><td><span class="up">▲10.0%</span></td></tr><tr><td style="text-align:left"><b>滴水湖景区</b></td><td>2,306</td><td>203</td><td>73%</td><td>11.5</td><td>201</td><td>1.01</td><td>41.1%</td><td>11.4</td><td><span class="dn">▼12.5%</span></td><td><span class="up">▲0.3%</span></td><td><span class="up">▲1.0%</span></td></tr><tr><td style="text-align:left"><b>闵行高校</b></td><td>1,291</td><td>323</td><td>46%</td><td>9.4</td><td>137</td><td>2.35</td><td>71.8%</td><td>4.0</td><td><span class="dn">▼33.9%</span></td><td><span class="up">▲43.3%</span></td><td><span class="up">▲15.9%</span></td></tr><tr><td style="text-align:left"><b>其他</b></td><td>1,676</td><td>239</td><td>87%</td><td>15.4</td><td>109</td><td>2.20</td><td>65.7%</td><td>7.0</td><td><span class="up">▲46.3%</span></td><td><span class="up">▲52.5%</span></td><td><span class="up">▲6.2%</span></td></tr><tr><td style="text-align:left"><b>徐汇滨江绿道</b></td><td>1,405</td><td>102</td><td>86%</td><td>17.7</td><td>79</td><td>1.29</td><td>46.5%</td><td>13.8</td><td><span class="up">▲7.7%</span></td><td><span class="up">▲10.5%</span></td><td><span class="dn">▼4.4%</span></td></tr><tr><td style="text-align:left"><b>闵行路面</b></td><td>1,043</td><td>139</td><td>90%</td><td>11.6</td><td>90</td><td>1.55</td><td>64.0%</td><td>7.5</td><td><span class="up">▲18.1%</span></td><td><span class="up">▲20.4%</span></td><td><span class="dn">▼6.5%</span></td></tr><tr><td style="text-align:left"><b>宝山滨江绿道</b></td><td>372</td><td>31</td><td>93%</td><td>9.8</td><td>38</td><td>0.81</td><td>43.0%</td><td>12.2</td><td><span class="up">▲5.7%</span></td><td><span class="up">▲9.7%</span></td><td><span class="dn">▼2.3%</span></td></tr><tr><td style="text-align:left"><b>宝山高校</b></td><td>218</td><td>41</td><td>43%</td><td>3.8</td><td>57</td><td>0.71</td><td>31.6%</td><td>5.4</td><td><span class="up">▲42.3%</span></td><td><span class="up">▲140.7%</span></td><td><span class="up">▲148.5%</span></td></tr><tr><td style="text-align:left"><b>长宁绿道</b></td><td>204</td><td>25</td><td>94%</td><td>13.6</td><td>15</td><td>1.69</td><td>51.4%</td><td>8.1</td><td><span class="up">▲45.7%</span></td><td><span class="up">▲19.6%</span></td><td><span class="up">▲11.6%</span></td></tr><tr class="rs"><td style="text-align:left">大盘合计</td><td>17,797</td><td>1,878</td><td>71%</td><td>14.3</td><td>1,242</td><td>1.51</td><td>54.7%</td><td>9.5</td><td><span class="up">▲2.8%</span></td><td><span class="up">▲18.4%</span></td><td><span class="up">▲11.2%</span></td></tr></tbody></table></div></div>
+
+<div class="card"><div class="ct">每日运营数据</div>
+<div class="note">默认展示大盘，可按场景与日期区间筛选；表底汇总行随筛选区间实时计算</div>
+<div class="flt">
+<div><label>场景</label><select id="fScene"><option value="大盘">大盘</option><option value="浦东滨江绿道">浦东滨江绿道</option><option value="滴水湖景区">滴水湖景区</option><option value="闵行高校">闵行高校</option><option value="其他">其他</option><option value="徐汇滨江绿道">徐汇滨江绿道</option><option value="闵行路面">闵行路面</option><option value="宝山滨江绿道">宝山滨江绿道</option><option value="宝山高校">宝山高校</option><option value="长宁绿道">长宁绿道</option></select></div>
+<div><label>开始日期</label><input type="date" id="fStart" value="2026-08-25" min="2026-08-25" max="2026-09-07"></div>
+<div><label>结束日期</label><input type="date" id="fEnd" value="2026-09-07" min="2026-08-25" max="2026-09-07"></div>
+<button id="fReset">重置</button>
+<span id="fInfo" style="font-size:11.5px;color:var(--g5)"></span>
+</div>
+<div class="tw"><table><thead><tr><th>日期</th><th>总收入</th><th>总订单</th><th>单次占比</th>
+<th>车均收入</th><th>可用车</th><th>可用翻台</th><th>出单率</th><th>客单价</th></tr></thead>
+<tbody id="dailyBody"></tbody></table></div></div>
+
+<div class="card"><div class="ct">大盘趋势</div>
+<div class="note">点击按钮切换B10运营指标，默认收入</div>
+<div class="bg" id="bg1"><button class="on" data-m="revenue">收入</button><button data-m="orders">订单</button><button data-m="turnover">可用翻台</button><button data-m="active_rate">出单率</button><button data-m="revenue_per_bike">车均收入</button></div>
+<div class="cb"><canvas id="c1"></canvas></div></div>
+
+<div class="card"><div class="ct">各场景指标趋势对比</div>
+<div class="note">点击下方图例可显示/隐藏对应场景，便于聚焦对比</div>
+<div class="bg" id="bg2"><button class="on" data-m="revenue">收入</button><button data-m="orders">订单</button><button data-m="turnover">可用翻台</button><button data-m="active_rate">出单率</button><button data-m="revenue_per_bike">车均收入</button></div>
+<div class="cb" style="height:360px"><canvas id="c2"></canvas></div>
+<div class="lgd" id="lgd2"></div></div>
+
+</div>
+<script>
+const P = {"DAILY":{"大盘":[{"d":"20260825","dm":"08/25","o":1261,"r":12045.9,"b":1006,"a":495,"s":953},{"d":"20260826","dm":"08/26","o":1335,"r":13846.2,"b":1070,"a":518,"s":1039},{"d":"20260827","dm":"08/27","o":1202,"r":11871.2,"b":1082,"a":473,"s":946},{"d":"20260828","dm":"08/28","o":1344,"r":13700.1,"b":1258,"a":554,"s":1104},{"d":"20260829","dm":"08/29","o":2542,"r":33541.5,"b":1257,"a":791,"s":1992},{"d":"20260830","dm":"08/30","o":1813,"r":23461.3,"b":1249,"a":708,"s":1423},{"d":"20260831","dm":"08/31","o":1609,"r":12687.6,"b":1247,"a":638,"s":1173},{"d":"20260901","dm":"09/01","o":1679,"r":12544.2,"b":1249,"a":653,"s":1259},{"d":"20260902","dm":"09/02","o":1127,"r":8359.8,"b":1236,"a":478,"s":791},{"d":"20260903","dm":"09/03","o":1557,"r":11560.6,"b":1237,"a":599,"s":1075},{"d":"20260904","dm":"09/04","o":1332,"r":11458.1,"b":1223,"a":563,"s":954},{"d":"20260905","dm":"09/05","o":2571,"r":31413.1,"b":1223,"a":841,"s":1841},{"d":"20260906","dm":"09/06","o":2779,"r":33340.5,"b":1263,"a":860,"s":1980},{"d":"20260907","dm":"09/07","o":2102,"r":15901.2,"b":1264,"a":760,"s":1490}],"浦东滨江绿道":[{"d":"20260825","dm":"08/25","o":614,"r":5869.0,"b":505,"a":261,"s":443},{"d":"20260826","dm":"08/26","o":678,"r":7826.2,"b":546,"a":279,"s":526},{"d":"20260827","dm":"08/27","o":615,"r":7036.8,"b":548,"a":256,"s":490},{"d":"20260828","dm":"08/28","o":609,"r":7197.0,"b":546,"a":282,"s":497},{"d":"20260829","dm":"08/29","o":1119,"r":15722.0,"b":535,"a":372,"s":856},{"d":"20260830","dm":"08/30","o":854,"r":11518.4,"b":522,"a":331,"s":659},{"d":"20260831","dm":"08/31","o":614,"r":6028.6,"b":530,"a":277,"s":420},{"d":"20260901","dm":"09/01","o":635,"r":5884.1,"b":521,"a":285,"s":469},{"d":"20260902","dm":"09/02","o":354,"r":3717.0,"b":515,"a":174,"s":255},{"d":"20260903","dm":"09/03","o":556,"r":5391.7,"b":529,"a":242,"s":403},{"d":"20260904","dm":"09/04","o":502,"r":5398.1,"b":519,"a":246,"s":356},{"d":"20260905","dm":"09/05","o":1277,"r":18129.7,"b":509,"a":386,"s":907},{"d":"20260906","dm":"09/06","o":1402,"r":19422.5,"b":504,"a":381,"s":1006},{"d":"20260907","dm":"09/07","o":709,"r":7031.6,"b":518,"a":320,"s":500}],"滴水湖景区":[{"d":"20260825","dm":"08/25","o":176,"r":2058.8,"b":202,"a":82,"s":138},{"d":"20260826","dm":"08/26","o":192,"r":2356.1,"b":200,"a":85,"s":160},{"d":"20260827","dm":"08/27","o":101,"r":1175.2,"b":203,"a":69,"s":85},{"d":"20260828","dm":"08/28","o":185,"r":1913.5,"b":201,"a":89,"s":146},{"d":"20260829","dm":"08/29","o":382,"r":5781.6,"b":201,"a":111,"s":307},{"d":"20260830","dm":"08/30","o":244,"r":3789.4,"b":207,"a":102,"s":203},{"d":"20260831","dm":"08/31","o":136,"r":1379.2,"b":201,"a":71,"s":94},{"d":"20260901","dm":"09/01","o":134,"r":1046.2,"b":200,"a":63,"s":81},{"d":"20260902","dm":"09/02","o":100,"r":900.8,"b":200,"a":53,"s":64},{"d":"20260903","dm":"09/03","o":145,"r":1321.0,"b":201,"a":66,"s":103},{"d":"20260904","dm":"09/04","o":165,"r":1750.1,"b":204,"a":70,"s":133},{"d":"20260905","dm":"09/05","o":361,"r":5218.8,"b":204,"a":125,"s":288},{"d":"20260906","dm":"09/06","o":322,"r":4184.5,"b":198,"a":115,"s":238},{"d":"20260907","dm":"09/07","o":193,"r":1721.3,"b":198,"a":85,"s":132}],"闵行高校":[{"d":"20260825","dm":"08/25","o":169,"r":1491.5,"b":44,"a":32,"s":107},{"d":"20260826","dm":"08/26","o":147,"r":1009.7,"b":44,"a":28,"s":77},{"d":"20260827","dm":"08/27","o":155,"r":1176.0,"b":47,"a":29,"s":95},{"d":"20260828","dm":"08/28","o":103,"r":955.0,"b":172,"a":31,"s":72},{"d":"20260829","dm":"08/29","o":486,"r":5650.0,"b":165,"a":124,"s":338},{"d":"20260830","dm":"08/30","o":239,"r":2289.8,"b":154,"a":88,"s":148},{"d":"20260831","dm":"08/31","o":278,"r":1088.0,"b":151,"a":92,"s":164},{"d":"20260901","dm":"09/01","o":314,"r":1284.9,"b":152,"a":101,"s":190},{"d":"20260902","dm":"09/02","o":297,"r":1049.9,"b":146,"a":93,"s":143},{"d":"20260903","dm":"09/03","o":356,"r":1129.1,"b":145,"a":107,"s":154},{"d":"20260904","dm":"09/04","o":264,"r":1116.4,"b":139,"a":78,"s":128},{"d":"20260905","dm":"09/05","o":344,"r":1796.8,"b":131,"a":106,"s":159},{"d":"20260906","dm":"09/06","o":330,"r":1521.1,"b":125,"a":102,"s":129},{"d":"20260907","dm":"09/07","o":355,"r":1136.4,"b":123,"a":103,"s":129}],"其他":[{"d":"20260825","dm":"08/25","o":67,"r":456.0,"b":46,"a":28,"s":61},{"d":"20260826","dm":"08/26","o":118,"r":767.9,"b":64,"a":39,"s":104},{"d":"20260827","dm":"08/27","o":133,"r":931.9,"b":72,"a":40,"s":117},{"d":"20260828","dm":"08/28","o":183,"r":1144.5,"b":71,"a":45,"s":158},{"d":"20260829","dm":"08/29","o":206,"r":1887.5,"b":88,"a":56,"s":184},{"d":"20260830","dm":"08/30","o":163,"r":1565.5,"b":93,"a":58,"s":140},{"d":"20260831","dm":"08/31","o":225,"r":1264.6,"b":95,"a":69,"s":192},{"d":"20260901","dm":"09/01","o":234,"r":1340.9,"b":100,"a":68,"s":213},{"d":"20260902","dm":"09/02","o":147,"r":903.4,"b":98,"a":55,"s":132},{"d":"20260903","dm":"09/03","o":156,"r":884.6,"b":84,"a":56,"s":129},{"d":"20260904","dm":"09/04","o":149,"r":1000.1,"b":91,"a":57,"s":124},{"d":"20260905","dm":"09/05","o":223,"r":2002.8,"b":97,"a":60,"s":195},{"d":"20260906","dm":"09/06","o":325,"r":2947.5,"b":145,"a":100,"s":272},{"d":"20260907","dm":"09/07","o":436,"r":2649.7,"b":145,"a":103,"s":385}],"徐汇滨江绿道":[{"d":"20260825","dm":"08/25","o":68,"r":768.9,"b":48,"a":26,"s":63},{"d":"20260826","dm":"08/26","o":39,"r":545.5,"b":49,"a":19,"s":28},{"d":"20260827","dm":"08/27","o":59,"r":544.5,"b":50,"a":17,"s":41},{"d":"20260828","dm":"08/28","o":97,"r":1240.5,"b":93,"a":37,"s":87},{"d":"20260829","dm":"08/29","o":152,"r":2554.8,"b":81,"a":47,"s":137},{"d":"20260830","dm":"08/30","o":121,"r":2092.5,"b":81,"a":44,"s":99},{"d":"20260831","dm":"08/31","o":110,"r":1379.7,"b":78,"a":41,"s":91},{"d":"20260901","dm":"09/01","o":84,"r":1151.8,"b":82,"a":39,"s":75},{"d":"20260902","dm":"09/02","o":75,"r":699.4,"b":79,"a":27,"s":68},{"d":"20260903","dm":"09/03","o":91,"r":943.9,"b":87,"a":33,"s":75},{"d":"20260904","dm":"09/04","o":49,"r":683.4,"b":83,"a":20,"s":42},{"d":"20260905","dm":"09/05","o":140,"r":2147.5,"b":81,"a":54,"s":113},{"d":"20260906","dm":"09/06","o":171,"r":3022.1,"b":74,"a":47,"s":149},{"d":"20260907","dm":"09/07","o":104,"r":1185.1,"b":69,"a":38,"s":92}],"闵行路面":[{"d":"20260825","dm":"08/25","o":107,"r":995.5,"b":64,"a":39,"s":90},{"d":"20260826","dm":"08/26","o":106,"r":841.3,"b":62,"a":43,"s":95},{"d":"20260827","dm":"08/27","o":96,"r":787.2,"b":58,"a":39,"s":86},{"d":"20260828","dm":"08/28","o":114,"r":795.1,"b":67,"a":42,"s":101},{"d":"20260829","dm":"08/29","o":121,"r":854.1,"b":76,"a":42,"s":107},{"d":"20260830","dm":"08/30","o":100,"r":978.9,"b":79,"a":45,"s":93},{"d":"20260831","dm":"08/31","o":164,"r":928.5,"b":81,"a":53,"s":145},{"d":"20260901","dm":"09/01","o":170,"r":1147.4,"b":81,"a":50,"s":160},{"d":"20260902","dm":"09/02","o":100,"r":712.1,"b":85,"a":44,"s":88},{"d":"20260903","dm":"09/03","o":157,"r":1101.3,"b":85,"a":58,"s":136},{"d":"20260904","dm":"09/04","o":114,"r":922.1,"b":81,"a":51,"s":108},{"d":"20260905","dm":"09/05","o":116,"r":1154.9,"b":91,"a":61,"s":103},{"d":"20260906","dm":"09/06","o":103,"r":831.1,"b":104,"a":66,"s":94},{"d":"20260907","dm":"09/07","o":213,"r":1433.2,"b":100,"a":71,"s":184}],"宝山滨江绿道":[{"d":"20260825","dm":"08/25","o":29,"r":331.5,"b":33,"a":15,"s":26},{"d":"20260826","dm":"08/26","o":27,"r":327.0,"b":31,"a":14,"s":26},{"d":"20260827","dm":"08/27","o":16,"r":105.6,"b":33,"a":12,"s":13},{"d":"20260828","dm":"08/28","o":23,"r":237.7,"b":35,"a":15,"s":21},{"d":"20260829","dm":"08/29","o":42,"r":741.1,"b":35,"a":22,"s":37},{"d":"20260830","dm":"08/30","o":34,"r":539.6,"b":34,"a":19,"s":28},{"d":"20260831","dm":"08/31","o":24,"r":181.6,"b":35,"a":15,"s":20},{"d":"20260901","dm":"09/01","o":23,"r":222.0,"b":37,"a":15,"s":22},{"d":"20260902","dm":"09/02","o":17,"r":177.5,"b":38,"a":12,"s":17},{"d":"20260903","dm":"09/03","o":23,"r":306.5,"b":35,"a":13,"s":21},{"d":"20260904","dm":"09/04","o":29,"r":278.5,"b":36,"a":17,"s":26},{"d":"20260905","dm":"09/05","o":45,"r":552.0,"b":35,"a":15,"s":42},{"d":"20260906","dm":"09/06","o":52,"r":777.3,"b":42,"a":25,"s":47},{"d":"20260907","dm":"09/07","o":25,"r":291.7,"b":42,"a":17,"s":24}],"宝山高校":[{"d":"20260825","dm":"08/25","o":7,"r":12.7,"b":52,"a":6,"s":2},{"d":"20260826","dm":"08/26","o":7,"r":56.6,"b":62,"a":6,"s":4},{"d":"20260827","dm":"08/27","o":10,"r":53.2,"b":59,"a":6,"s":4},{"d":"20260828","dm":"08/28","o":10,"r":49.4,"b":59,"a":6,"s":2},{"d":"20260829","dm":"08/29","o":11,"r":79.1,"b":58,"a":6,"s":5},{"d":"20260830","dm":"08/30","o":35,"r":511.8,"b":63,"a":16,"s":32},{"d":"20260831","dm":"08/31","o":38,"r":309.3,"b":62,"a":16,"s":28},{"d":"20260901","dm":"09/01","o":62,"r":375.1,"b":61,"a":24,"s":30},{"d":"20260902","dm":"09/02","o":26,"r":144.2,"b":60,"a":16,"s":13},{"d":"20260903","dm":"09/03","o":38,"r":199.0,"b":59,"a":18,"s":19},{"d":"20260904","dm":"09/04","o":37,"r":163.9,"b":57,"a":17,"s":15},{"d":"20260905","dm":"09/05","o":44,"r":214.4,"b":56,"a":21,"s":15},{"d":"20260906","dm":"09/06","o":41,"r":249.9,"b":55,"a":15,"s":15},{"d":"20260907","dm":"09/07","o":36,"r":179.4,"b":54,"a":16,"s":14}],"长宁绿道":[{"d":"20260825","dm":"08/25","o":24,"r":62.0,"b":12,"a":6,"s":23},{"d":"20260826","dm":"08/26","o":21,"r":116.0,"b":12,"a":5,"s":19},{"d":"20260827","dm":"08/27","o":17,"r":61.0,"b":12,"a":5,"s":15},{"d":"20260828","dm":"08/28","o":20,"r":167.5,"b":14,"a":7,"s":20},{"d":"20260829","dm":"08/29","o":23,"r":271.4,"b":18,"a":11,"s":21},{"d":"20260830","dm":"08/30","o":23,"r":175.5,"b":16,"a":5,"s":21},{"d":"20260831","dm":"08/31","o":20,"r":128.0,"b":14,"a":4,"s":19},{"d":"20260901","dm":"09/01","o":23,"r":91.7,"b":15,"a":8,"s":19},{"d":"20260902","dm":"09/02","o":11,"r":55.5,"b":15,"a":4,"s":11},{"d":"20260903","dm":"09/03","o":35,"r":283.4,"b":12,"a":6,"s":35},{"d":"20260904","dm":"09/04","o":23,"r":145.5,"b":13,"a":7,"s":22},{"d":"20260905","dm":"09/05","o":21,"r":196.3,"b":19,"a":13,"s":19},{"d":"20260906","dm":"09/06","o":33,"r":384.5,"b":16,"a":9,"s":30},{"d":"20260907","dm":"09/07","o":31,"r":272.7,"b":15,"a":7,"s":30}]},"TR_MAIN":{"revenue":[12045.9,13846.2,11871.2,13700.1,33541.5,23461.3,12687.6,12544.2,8359.8,11560.6,11458.1,31413.1,33340.5,15901.2],"orders":[1261,1335,1202,1344,2542,1813,1609,1679,1127,1557,1332,2571,2779,2102],"turnover":[1.253,1.248,1.111,1.068,2.022,1.452,1.29,1.344,0.912,1.259,1.089,2.102,2.2,1.663],"active_rate":[49.2,48.41,43.72,44.04,62.93,56.69,51.16,52.28,38.67,48.42,46.03,68.77,68.09,60.13],"revenue_per_bike":[11.97,12.94,10.97,10.89,26.68,18.78,10.17,10.04,6.76,9.35,9.37,25.69,26.4,12.58]},"TR_SC":{"浦东滨江绿道":{"revenue":[5869.0,7826.2,7036.8,7197.0,15722.0,11518.4,6028.6,5884.1,3717.0,5391.7,5398.1,18129.7,19422.5,7031.6],"orders":[614,678,615,609,1119,854,614,635,354,556,502,1277,1402,709],"turnover":[1.216,1.242,1.122,1.115,2.092,1.636,1.158,1.219,0.687,1.051,0.967,2.509,2.782,1.369],"active_rate":[51.68,51.1,46.72,51.65,69.53,63.41,52.26,54.7,33.79,45.75,47.4,75.83,75.6,61.78],"revenue_per_bike":[11.62,14.33,12.84,13.18,29.39,22.07,11.37,11.29,7.22,10.19,10.4,35.62,38.54,13.57]},"滴水湖景区":{"revenue":[2058.8,2356.1,1175.2,1913.5,5781.6,3789.4,1379.2,1046.2,900.8,1321.0,1750.1,5218.8,4184.5,1721.3],"orders":[176,192,101,185,382,244,136,134,100,145,165,361,322,193],"turnover":[0.871,0.96,0.498,0.92,1.9,1.179,0.677,0.67,0.5,0.721,0.809,1.77,1.626,0.975],"active_rate":[40.59,42.5,33.99,44.28,55.22,49.28,35.32,31.5,26.5,32.84,34.31,61.27,58.08,42.93],"revenue_per_bike":[10.19,11.78,5.79,9.52,28.76,18.31,6.86,5.23,4.5,6.57,8.58,25.58,21.13,8.69]},"闵行高校":{"revenue":[1491.5,1009.7,1176.0,955.0,5650.0,2289.8,1088.0,1284.9,1049.9,1129.1,1116.4,1796.8,1521.1,1136.4],"orders":[169,147,155,103,486,239,278,314,297,356,264,344,330,355],"turnover":[3.841,3.341,3.298,0.599,2.945,1.552,1.841,2.066,2.034,2.455,1.899,2.626,2.64,2.886],"active_rate":[72.73,63.64,61.7,18.02,75.15,57.14,60.93,66.45,63.7,73.79,56.12,80.92,81.6,83.74],"revenue_per_bike":[33.9,22.95,25.02,5.55,34.24,14.87,7.21,8.45,7.19,7.79,8.03,13.72,12.17,9.24]},"其他":{"revenue":[456.0,767.9,931.9,1144.5,1887.5,1565.5,1264.6,1340.9,903.4,884.6,1000.1,2002.8,2947.5,2649.7],"orders":[67,118,133,183,206,163,225,234,147,156,149,223,325,436],"turnover":[1.457,1.844,1.847,2.577,2.341,1.753,2.368,2.34,1.5,1.857,1.637,2.299,2.241,3.007],"active_rate":[60.87,60.94,55.56,63.38,63.64,62.37,72.63,68.0,56.12,66.67,62.64,61.86,68.97,71.03],"revenue_per_bike":[9.91,12.0,12.94,16.12,21.45,16.83,13.31,13.41,9.22,10.53,10.99,20.65,20.33,18.27]},"徐汇滨江绿道":{"revenue":[768.9,545.5,544.5,1240.5,2554.8,2092.5,1379.7,1151.8,699.4,943.9,683.4,2147.5,3022.1,1185.1],"orders":[68,39,59,97,152,121,110,84,75,91,49,140,171,104],"turnover":[1.417,0.796,1.18,1.043,1.877,1.494,1.41,1.024,0.949,1.046,0.59,1.728,2.311,1.507],"active_rate":[54.17,38.78,34.0,39.78,58.02,54.32,52.56,47.56,34.18,37.93,24.1,66.67,63.51,55.07],"revenue_per_bike":[16.02,11.13,10.89,13.34,31.54,25.83,17.69,14.05,8.85,10.85,8.23,26.51,40.84,17.18]},"闵行路面":{"revenue":[995.5,841.3,787.2,795.1,854.1,978.9,928.5,1147.4,712.1,1101.3,922.1,1154.9,831.1,1433.2],"orders":[107,106,96,114,121,100,164,170,100,157,114,116,103,213],"turnover":[1.672,1.71,1.655,1.701,1.592,1.266,2.025,2.099,1.176,1.847,1.407,1.275,0.99,2.13],"active_rate":[60.94,69.35,67.24,62.69,55.26,56.96,65.43,61.73,51.76,68.24,62.96,67.03,63.46,71.0],"revenue_per_bike":[15.55,13.57,13.57,11.87,11.24,12.39,11.46,14.17,8.38,12.96,11.38,12.69,7.99,14.33]},"宝山滨江绿道":{"revenue":[331.5,327.0,105.6,237.7,741.1,539.6,181.6,222.0,177.5,306.5,278.5,552.0,777.3,291.7],"orders":[29,27,16,23,42,34,24,23,17,23,29,45,52,25],"turnover":[0.879,0.871,0.485,0.657,1.2,1.0,0.686,0.622,0.447,0.657,0.806,1.286,1.238,0.595],"active_rate":[45.45,45.16,36.36,42.86,62.86,55.88,42.86,40.54,31.58,37.14,47.22,42.86,59.52,40.48],"revenue_per_bike":[10.05,10.55,3.2,6.79,21.17,15.87,5.19,6.0,4.67,8.76,7.74,15.77,18.51,6.95]},"宝山高校":{"revenue":[12.7,56.6,53.2,49.4,79.1,511.8,309.3,375.1,144.2,199.0,163.9,214.4,249.9,179.4],"orders":[7,7,10,10,11,35,38,62,26,38,37,44,41,36],"turnover":[0.135,0.113,0.169,0.169,0.19,0.556,0.613,1.016,0.433,0.644,0.649,0.786,0.745,0.667],"active_rate":[11.54,9.68,10.17,10.17,10.34,25.4,25.81,39.34,26.67,30.51,29.82,37.5,27.27,29.63],"revenue_per_bike":[0.24,0.91,0.9,0.84,1.36,8.12,4.99,6.15,2.4,3.37,2.88,3.83,4.54,3.32]},"长宁绿道":{"revenue":[62.0,116.0,61.0,167.5,271.4,175.5,128.0,91.7,55.5,283.4,145.5,196.3,384.5,272.7],"orders":[24,21,17,20,23,23,20,23,11,35,23,21,33,31],"turnover":[2.0,1.75,1.417,1.429,1.278,1.438,1.429,1.533,0.733,2.917,1.769,1.105,2.062,2.067],"active_rate":[50.0,41.67,41.67,50.0,61.11,31.25,28.57,53.33,26.67,50.0,53.85,68.42,56.25,46.67],"revenue_per_bike":[5.17,9.67,5.08,11.96,15.08,10.97,9.14,6.11,3.7,23.62,11.19,10.33,24.03,18.18]}},"PALETTE":{"浦东滨江绿道":"#2979ff","滴水湖景区":"#00bcd4","闵行高校":"#7c4dff","其他":"#ff9800","徐汇滨江绿道":"#4caf50","闵行路面":"#e91e63","宝山滨江绿道":"#795548","宝山高校":"#009688","长宁绿道":"#ff5722"},"R7":["20260901","20260902","20260903","20260904","20260905","20260906","20260907"],"P7":["20260825","20260826","20260827","20260828","20260829","20260830","20260831"],"DR7":"09/01-09/07","DP7":"08/25-08/31","scenes":["浦东滨江绿道","滴水湖景区","闵行高校","其他","徐汇滨江绿道","闵行路面","宝山滨江绿道","宝山高校","长宁绿道"],"main":"大盘","dates":["20260825","20260826","20260827","20260828","20260829","20260830","20260831","20260901","20260902","20260903","20260904","20260905","20260906","20260907"],"dataDate":"20260907","digest":{"dataDate":"2026-09-07","prevDate":"2026-09-06","range":["2026-08-25","2026-09-07"],"days":14,"dr7":"09/01-09/07","dp7":"08/25-08/31","day":{"cur":{"n":1,"rev":15901.2,"ord":2102.0,"bikes":1264.0,"spct":70.88487155090391,"rpb":12.580063291139242,"turn":1.6629746835443038,"ar":60.12658227848101,"price":7.564795432921028},"prev":{"n":1,"rev":33340.5,"ord":2779.0,"bikes":1263.0,"spct":71.24865059373876,"rpb":26.397862232779097,"turn":2.2003167062549487,"ar":68.09184481393508,"price":11.99730118747751}},"week":{"cur":{"n":7,"rev":17796.785714285714,"ord":1878.142857142857,"bikes":1242.142857142857,"spct":71.42313835856089,"rpb":14.327487061529615,"turn":1.5120184013801035,"ar":54.67510063254745,"price":9.475735909332927},"prev":{"n":7,"rev":17307.685714285715,"ord":1586.5714285714287,"bikes":1167.0,"spct":77.70574464253556,"rpb":14.83092177745134,"turn":1.3595299302240176,"ar":51.1323295384992,"price":10.908860075634792}},"scenes":{"浦东滨江绿道":{"cur":{"n":7,"rev":9282.1,"ord":776.4285714285714,"bikes":516.4285714285714,"spct":71.68353265869365,"rpb":17.973637621023514,"turn":1.5034578146611342,"ar":56.2655601659751,"price":11.954866605335788},"prev":{"n":7,"rev":8742.57142857143,"ord":729.0,"bikes":533.1428571428571,"spct":76.24926513815403,"rpb":16.39817792068596,"turn":1.367363344051447,"ar":55.14469453376206,"price":11.992553399960807}},"滴水湖景区":{"cur":{"n":7,"rev":2306.1,"ord":202.85714285714286,"bikes":200.71428571428572,"spct":73.16901408450704,"rpb":11.48946619217082,"turn":1.01067615658363,"ar":41.06761565836299,"price":11.368098591549296},"prev":{"n":7,"rev":2636.2571428571428,"ord":202.28571428571428,"bikes":202.14285714285714,"spct":80.01412429378531,"rpb":13.04155477031802,"turn":1.0007067137809187,"ar":43.03886925795053,"price":13.03234463276836}},"闵行高校":{"cur":{"n":7,"rev":1290.6571428571428,"ord":322.85714285714283,"bikes":137.28571428571428,"spct":45.663716814159294,"rpb":9.401248699271592,"turn":2.3517169614984392,"ar":71.80020811654526,"price":3.9976106194690266},"prev":{"n":7,"rev":1951.4285714285713,"ord":225.28571428571428,"bikes":111.0,"spct":63.47495244134432,"rpb":17.58043758043758,"turn":2.0296010296010296,"ar":54.56885456885456,"price":8.662016487000635}},"其他":{"cur":{"n":7,"rev":1675.5714285714287,"ord":238.57142857142858,"bikes":108.57142857142857,"spct":86.82634730538922,"rpb":15.432894736842105,"turn":2.1973684210526314,"ar":65.65789473684211,"price":7.023353293413174},"prev":{"n":7,"rev":1145.4142857142856,"ord":156.42857142857142,"bikes":75.57142857142857,"spct":87.30593607305937,"rpb":15.156710775047259,"turn":2.0699432892249527,"ar":63.32703213610586,"price":7.322283105022831}},"徐汇滨江绿道":{"cur":{"n":7,"rev":1404.742857142857,"ord":102.0,"bikes":79.28571428571429,"spct":85.99439775910365,"rpb":17.717477477477477,"turn":1.2864864864864864,"ar":46.48648648648649,"price":13.771988795518206},"prev":{"n":7,"rev":1303.7714285714285,"ord":92.28571428571429,"bikes":68.57142857142857,"spct":84.52012383900929,"rpb":19.013333333333332,"turn":1.3458333333333334,"ar":48.125,"price":14.127554179566562}},"闵行路面":{"cur":{"n":7,"rev":1043.1571428571428,"ord":139.0,"bikes":89.57142857142857,"spct":89.72250770811921,"rpb":11.64609250398724,"turn":1.5518341307814991,"ar":63.95534290271132,"price":7.504727646454265},"prev":{"n":7,"rev":882.9428571428572,"ord":115.42857142857143,"bikes":69.57142857142857,"spct":88.73762376237624,"rpb":12.6911704312115,"turn":1.6591375770020533,"ar":62.217659137576995,"price":7.649257425742575}},"宝山滨江绿道":{"cur":{"n":7,"rev":372.2142857142857,"ord":30.571428571428573,"bikes":37.857142857142854,"spct":92.99065420560748,"rpb":9.832075471698113,"turn":0.8075471698113208,"ar":43.0188679245283,"price":12.175233644859814},"prev":{"n":7,"rev":352.0142857142857,"ord":27.857142857142858,"bikes":33.714285714285715,"spct":87.6923076923077,"rpb":10.441101694915254,"turn":0.826271186440678,"ar":47.45762711864407,"price":12.636410256410256}},"宝山高校":{"cur":{"n":7,"rev":217.9857142857143,"ord":40.57142857142857,"bikes":57.42857142857143,"spct":42.6056338028169,"rpb":3.795771144278607,"turn":0.7064676616915423,"ar":31.592039800995025,"price":5.3728873239436625},"prev":{"n":7,"rev":153.15714285714284,"ord":16.857142857142858,"bikes":59.285714285714285,"spct":65.2542372881356,"rpb":2.583373493975903,"turn":0.28433734939759037,"ar":14.93975903614458,"price":9.085593220338982}},"长宁绿道":{"cur":{"n":7,"rev":204.22857142857143,"ord":25.285714285714285,"bikes":15.0,"spct":93.78531073446328,"rpb":13.615238095238094,"turn":1.6857142857142857,"ar":51.42857142857142,"price":8.07683615819209},"prev":{"n":7,"rev":140.2,"ord":21.142857142857142,"bikes":14.0,"spct":93.24324324324324,"rpb":10.014285714285714,"turn":1.510204081632653,"ar":43.87755102040816,"price":6.6310810810810805}}},"topUp":[["闵行路面",72.44615569726868],["其他",-10.103477523324859],["闵行高校",-25.290907895601855]],"topDown":[["浦东滨江绿道",-63.79662762260266],["宝山滨江绿道",-62.47266177794931],["徐汇滨江绿道",-60.78554647430595]],"turnGood":[["闵行高校",2.3517169614984392],["其他",2.1973684210526314],["长宁绿道",1.6857142857142857]],"turnBad":[["宝山高校",0.7064676616915423],["宝山滨江绿道",0.8075471698113208]]}};
+</script>
+<script>
+const DAILY=P.DAILY, TR_MAIN=P.TR_MAIN, TR_SC=P.TR_SC, PALETTE=P.PALETTE;
+const R7=P.R7, P7=P.P7, DR7=P.DR7, DP7=P.DP7, SCENES=P.scenes, MAIN=P.main;
+const ML={revenue:'收入(元)',orders:'订单',turnover:'可用翻台(单/车)',
+          active_rate:'出单率(%)',revenue_per_bike:'车均收入(元)'};
+const LABELS=DAILY[MAIN].map(x=>x.dm);
+
+function calc(rows){
+  if(!rows.length) return null;
+  let o=0,r=0,b=0,a=0,s=0;
+  rows.forEach(x=>{o+=x.o;r+=x.r;b+=x.b;a+=x.a;s+=x.s});
+  const n=rows.length;
+  return {rev:r/n,ord:o/n,spct:o?s/o*100:0,rpb:b?r/b:0,bikes:b/n,
+          turn:b?o/b:0,ar:b?a/b*100:0,price:o?r/o:0,n:n};
+}
+function fmt(n){return Math.round(n).toLocaleString()}
+function pc(n,o){
+  if(!o) return '--';
+  const v=(n-o)/o*100;
+  if(v>0) return '<span class="up">▲'+v.toFixed(1)+'%</span>';
+  if(v<0) return '<span class="dn">▼'+Math.abs(v).toFixed(1)+'%</span>';
+  return '0.0%';
+}
+function rowHtml(x,cls){
+  const turn=x.b?(x.o/x.b).toFixed(2):'0.00';
+  const ar=x.b?(x.a/x.b*100).toFixed(1):'0.0';
+  const rpb=x.b?(x.r/x.b).toFixed(1):'0.0';
+  const spct=x.o?(x.s/x.o*100).toFixed(1):'0.0';
+  const pr=x.o?(x.r/x.o).toFixed(1):'0.0';
+  return '<tr'+(cls?' class="'+cls+'"':'')+'><td><b>'+x.dm+'</b></td><td>'+fmt(x.r)+
+    '</td><td>'+x.o+'</td><td>'+spct+'%</td><td>'+rpb+'</td><td>'+x.b+'</td><td>'+turn+
+    '</td><td>'+ar+'%</td><td>'+pr+'</td></tr>';
+}
+function sumRow(m,label,cls){
+  if(!m) return '';
+  return '<tr class="'+cls+'"><td>'+label+'</td><td>'+fmt(m.rev)+'</td><td>'+fmt(m.ord)+
+    '</td><td>'+m.spct.toFixed(1)+'%</td><td>'+m.rpb.toFixed(1)+'</td><td>'+fmt(m.bikes)+
+    '</td><td>'+m.turn.toFixed(2)+'</td><td>'+m.ar.toFixed(1)+'%</td><td>'+m.price.toFixed(1)+'</td></tr>';
+}
+function chgRow(a,b,label){
+  if(!a||!b) return '';
+  return '<tr class="rs3"><td>'+label+'</td><td>'+pc(a.rev,b.rev)+'</td><td>'+pc(a.ord,b.ord)+
+    '</td><td>'+pc(a.spct,b.spct)+'</td><td>'+pc(a.rpb,b.rpb)+'</td><td>'+pc(a.bikes,b.bikes)+
+    '</td><td>'+pc(a.turn,b.turn)+'</td><td>'+pc(a.ar,b.ar)+'</td><td>'+pc(a.price,b.price)+'</td></tr>';
+}
+function renderTable(){
+  const sc=document.getElementById('fScene').value;
+  const st=document.getElementById('fStart').value.replace(/-/g,'');
+  const en=document.getElementById('fEnd').value.replace(/-/g,'');
+  const all=DAILY[sc]||[];
+  const rows=all.filter(x=>x.d>=st&&x.d<=en);
+  let h='';
+  rows.forEach(x=>{h+=rowHtml(x, x.d===R7[0]?'dv':'')});
+  if(!rows.length) h='<tr><td colspan="9" style="padding:18px;color:#6b7280">当前筛选条件下无数据</td></tr>';
+  const cur=calc(rows);
+  const r7=calc(all.filter(x=>R7.indexOf(x.d)>=0));
+  const p7=calc(all.filter(x=>P7.indexOf(x.d)>=0));
+  h+=sumRow(cur,'筛选区间日均 ('+(cur?cur.n:0)+'天)','rs2');
+  h+=sumRow(r7,'近7天('+DR7+')日均','rs');
+  h+=sumRow(p7,'上7天('+DP7+')日均','rs');
+  h+=chgRow(r7,p7,'周环比');
+  document.getElementById('dailyBody').innerHTML=h;
+  document.getElementById('fInfo').textContent=
+    '当前: '+sc+' · '+(cur?cur.n:0)+'天';
+}
+
+let c1=null,c2=null;
+function drawC1(metric){
+  const ctx=document.getElementById('c1');
+  if(c1) c1.destroy();
+  c1=new Chart(ctx,{type:'line',data:{labels:LABELS,datasets:[{
+      label:ML[metric],data:TR_MAIN[metric],borderColor:'#2979ff',
+      backgroundColor:'rgba(41,121,255,.12)',borderWidth:2.4,tension:.32,fill:true,
+      pointRadius:3,pointBackgroundColor:'#fff',pointBorderColor:'#2979ff',pointBorderWidth:2}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},
+      scales:{y:{beginAtZero:false,grid:{color:'#eef2f8'},title:{display:true,text:ML[metric]}},
+              x:{grid:{display:false}}}}});
+}
+function drawC2(metric){
+  const ctx=document.getElementById('c2');
+  if(c2) c2.destroy();
+  const ds=SCENES.map(s=>({label:s,data:TR_SC[s][metric],borderColor:PALETTE[s],
+      backgroundColor:PALETTE[s],borderWidth:2,tension:.3,fill:false,pointRadius:2.2}));
+  c2=new Chart(ctx,{type:'line',data:{labels:LABELS,datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},
+      scales:{y:{beginAtZero:false,grid:{color:'#eef2f8'},title:{display:true,text:ML[metric]}},
+              x:{grid:{display:false}}}}});
+  buildLegend();
+}
+function buildLegend(){
+  const box=document.getElementById('lgd2');
+  box.innerHTML=SCENES.map((s,i)=>
+    '<div class="lgd-i'+(c2.isDatasetVisible(i)?'':' off')+'" data-i="'+i+'">'
+    +'<span class="sw" style="background:'+PALETTE[s]+'"></span>'+s+'</div>').join('');
+  box.querySelectorAll('.lgd-i').forEach(el=>el.onclick=()=>{
+    const i=+el.getAttribute('data-i');
+    c2.setDatasetVisibility(i,!c2.isDatasetVisible(i));
+    c2.update(); buildLegend();
+  });
+}
+function bindBtns(id,fn){
+  const box=document.getElementById(id);
+  box.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    box.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); fn(b.getAttribute('data-m'));
+  });
+}
+window.onload=function(){
+  ['fScene','fStart','fEnd'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.addEventListener('change',renderTable);
+  });
+  document.getElementById('fReset').onclick=()=>{
+    document.getElementById('fScene').value=MAIN;
+    document.getElementById('fStart').value=document.getElementById('fStart').min;
+    document.getElementById('fEnd').value=document.getElementById('fEnd').max;
+    renderTable();
+  };
+  renderTable();
+  drawC1('revenue'); drawC2('revenue');
+  bindBtns('bg1',drawC1); bindBtns('bg2',drawC2);
+};
+</script>
+</body></html>
